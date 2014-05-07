@@ -55,6 +55,7 @@
       'lib/util.js',
       'lib/vm.js',
       'lib/zlib.js',
+      'lib/protobuf.js',
     ],
   },
 
@@ -65,12 +66,14 @@
 
       'dependencies': [
         'node_js2c#host',
+        './deps/protobuf/protobuf.gyp:protobuf',
       ],
 
       'include_dirs': [
         'src',
         'tools/msvs/genfiles',
         'deps/uv/src/ares',
+        'deps/protobuf/src',
         '<(SHARED_INTERMEDIATE_DIR)' # for node_natives.h
       ],
 
@@ -91,6 +94,7 @@
         'src/node_stat_watcher.cc',
         'src/node_string.cc',
         'src/node_zlib.cc',
+        'src/node_protobuf.cc',
         'src/pipe_wrap.cc',
         'src/signal_wrap.cc',
         'src/string_bytes.cc',
