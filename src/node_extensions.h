@@ -45,6 +45,8 @@ NODE_EXT_LIST_ITEM(node_signal_wrap)
 NODE_EXT_LIST_ITEM(node_protobuf)
 NODE_EXT_LIST_ITEM(node_dns_sd)
 NODE_EXT_LIST_ITEM(node_androidlog)
+NODE_EXT_LIST_ITEM(node_ws_bufferutil)
+NODE_EXT_LIST_ITEM(node_ws_validation)
 
 NODE_EXT_LIST_END
 

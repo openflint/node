@@ -59,6 +59,22 @@
       'lib/uuid.js',
       'lib/dns_sd.js',
       'lib/logcat.js',
+
+      'lib/options.js',
+
+      'lib/ws.js',
+      'lib/_ws_buffer_pool.js',
+      'lib/_ws_bufferutil_fallback.js',
+      'lib/_ws_bufferutil.js',
+      'lib/_ws_error_codes.js',
+      'lib/_ws_receiver_hixie.js',
+      'lib/_ws_receiver.js',
+      'lib/_ws_sender_hixie.js',
+      'lib/_ws_sender.js',
+      'lib/_ws_validation_fallback.js',
+      'lib/_ws_validation.js',
+      'lib/_ws_websocket.js',
+      'lib/_ws_websocket_server.js',
     ],
   },
 
@@ -137,6 +153,10 @@
         'src/mdns/txt_record_ref.cpp',
         'src/mdns/txt_record_ref.hpp',
         'src/mdns/txt_record_set_value.cpp',
+
+        'src/ws/nan.h',
+        'src/ws/bufferutil.cc',
+        'src/ws/validation.cc',
 
         # headers to make for a more pleasant IDE experience
         'src/handle_wrap.h',
