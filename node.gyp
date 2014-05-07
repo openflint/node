@@ -62,6 +62,12 @@
 
       'lib/options.js',
       'lib/colors.js',
+      'lib/aws_sign2.js',
+      'lib/forever_agent.js',
+      'lib/form_data.js',
+      'lib/json_stringify_safe.js',
+      'lib/oauth_sign.js',
+      'lib/qs.js',
 
       'lib/ws.js',
       'lib/_ws_buffer_pool.js',
