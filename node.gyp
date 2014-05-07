@@ -58,6 +58,7 @@
       'lib/protobuf.js',
       'lib/uuid.js',
       'lib/dns_sd.js',
+      'lib/logcat.js',
     ],
   },
 
@@ -353,7 +354,12 @@
           ],
         }],
         [ 'OS=="android"', {
+          'sources': [
+            'src/node_androidlog.h',
+            'src/node_androidlog.cc',
+          ],
           'defines': [
+            'ANDROID',
             '__ANDROID__',
             '_GNU_SOURCE',
             'NOT_HAVE_SA_LEN',

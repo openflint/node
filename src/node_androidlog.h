@@ -1,4 +1,4 @@
-// Copyright Joyent, Inc. and other Node contributors.
+// Copyright Natsume23
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -19,32 +19,20 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#ifndef node_androidlog_h
+#define node_androidlog_h
 
-NODE_EXT_LIST_START
-NODE_EXT_LIST_ITEM(node_buffer)
-#if HAVE_OPENSSL
-NODE_EXT_LIST_ITEM(node_crypto)
-#endif
-NODE_EXT_LIST_ITEM(node_evals)
-NODE_EXT_LIST_ITEM(node_fs)
-NODE_EXT_LIST_ITEM(node_http_parser)
-NODE_EXT_LIST_ITEM(node_os)
-NODE_EXT_LIST_ITEM(node_zlib)
+#include <node.h>
+#include <v8.h>
 
-// libuv rewrite
-NODE_EXT_LIST_ITEM(node_timer_wrap)
-NODE_EXT_LIST_ITEM(node_tcp_wrap)
-NODE_EXT_LIST_ITEM(node_udp_wrap)
-NODE_EXT_LIST_ITEM(node_pipe_wrap)
-NODE_EXT_LIST_ITEM(node_cares_wrap)
-NODE_EXT_LIST_ITEM(node_tty_wrap)
-NODE_EXT_LIST_ITEM(node_process_wrap)
-NODE_EXT_LIST_ITEM(node_fs_event_wrap)
-NODE_EXT_LIST_ITEM(node_signal_wrap)
+namespace node {
 
-NODE_EXT_LIST_ITEM(node_protobuf)
-NODE_EXT_LIST_ITEM(node_dns_sd)
-NODE_EXT_LIST_ITEM(node_androidlog)
+class Androidlog {
+public:
+  static void Initialize (v8::Handle<v8::Object> target);
+};
 
-NODE_EXT_LIST_END
 
+}  // namespace node
+
+#endif  // node_androidlog_h
