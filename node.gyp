@@ -57,6 +57,7 @@
       'lib/zlib.js',
       'lib/protobuf.js',
       'lib/uuid.js',
+      'lib/dns_sd.js',
     ],
   },
 
@@ -75,6 +76,7 @@
         'tools/msvs/genfiles',
         'deps/uv/src/ares',
         'deps/protobuf/src',
+        'deps/mdnsresponder/mDNSShared',
         '<(SHARED_INTERMEDIATE_DIR)' # for node_natives.h
       ],
 
@@ -107,6 +109,34 @@
         'src/process_wrap.cc',
         'src/v8_typed_array.cc',
         'src/udp_wrap.cc',
+
+        'src/mdns/demangle.cpp',
+        'src/mdns/dns_sd.cpp',
+        'src/mdns/dns_service_browse.cpp',
+        'src/mdns/dns_service_enumerate_domains.cpp',
+        'src/mdns/dns_service_get_addr_info.cpp',
+        'src/mdns/dns_service_process_result.cpp',
+        'src/mdns/dns_service_ref.cpp',
+        'src/mdns/dns_service_ref.hpp',
+        'src/mdns/dns_service_ref_deallocate.cpp',
+        'src/mdns/dns_service_ref_sock_fd.cpp',
+        'src/mdns/dns_service_register.cpp',
+        'src/mdns/dns_service_resolve.cpp',
+        'src/mdns/mdns.hpp',
+        'src/mdns/mdns_settings.hpp',
+        'src/mdns/mdns_utils.cpp',
+        'src/mdns/mdns_utils.hpp',
+        'src/mdns/network_interface.cpp',
+        'src/mdns/socket_watcher.cpp',
+        'src/mdns/socket_watcher.hpp',
+        'src/mdns/txt_record_buffer_to_object.cpp',
+        'src/mdns/txt_record_create.cpp',
+        'src/mdns/txt_record_deallocate.cpp',
+        'src/mdns/txt_record_get_length.cpp',
+        'src/mdns/txt_record_ref.cpp',
+        'src/mdns/txt_record_ref.hpp',
+        'src/mdns/txt_record_set_value.cpp',
+
         # headers to make for a more pleasant IDE experience
         'src/handle_wrap.h',
         'src/node.h',
@@ -330,6 +360,14 @@
             'USES_NETLINK',
             'TARGET_OS_LINUX',
             'HAVE_LINUX',
+            'MDNS_UDS_SERVERPATH="/dev/socket/mdnsd"',
+            'MDNS_DEBUGMSGS=1',
+          ],
+          'library_dirs': [
+            '<!(pwd)/deps/mdnsresponder',
+          ],
+          'libraries': [
+            '-lmdnssd',
           ],
         }],
         [
