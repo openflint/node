@@ -61,6 +61,7 @@
       'lib/logcat.js',
 
       'lib/options.js',
+      'lib/colors.js',
 
       'lib/ws.js',
       'lib/_ws_buffer_pool.js',
