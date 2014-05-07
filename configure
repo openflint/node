@@ -238,11 +238,11 @@ parser.add_option("--dest-cpu",
     dest="dest_cpu",
     help="CPU architecture to build for. Valid values are: arm, ia32, x64")
 
-parser.add_option("--dest-os",
-    action="store",
-    dest="dest_os",
-    help="Operating system to build for. Valid values are: "
-         "win, mac, solaris, freebsd, openbsd, linux")
+parser.add_option('--dest-os',
+    action='store',
+    dest='dest_os',
+    help='operating system to build for. Valid values are: '
+         'win, mac, solaris, freebsd, openbsd, linux, android')
 
 parser.add_option("--no-ifaddrs",
     action="store_true",
@@ -463,6 +463,8 @@ def configure_mips(o):
 
 
 def configure_node(o):
+  if options.dest_os == 'android':
+    o['variables']['OS'] = 'android'
   o['variables']['v8_enable_gdbjit'] = 1 if options.gdb else 0
   o['variables']['v8_no_strict_aliasing'] = 1 # work around compiler bugs
   o['variables']['node_prefix'] = os.path.expanduser(options.prefix or '')

@@ -124,6 +124,10 @@
         },
       }
     },
+    # Forcibly disable -Werror.  We support a wide range of compilers, it's
+    # simply not feasible to squelch all warnings, never mind that the
+    # libraries in deps/ are not under our control.
+    'cflags!': ['-Werror'],
     'msvs_settings': {
       'VCCLCompilerTool': {
         'StringPooling': 'true', # pool string literals
@@ -154,6 +158,7 @@
         ],
       },
     },
+    'msvs_disabled_warnings': [4351, 4355, 4800],
     'conditions': [
       ['OS == "win"', {
         'msvs_cygwin_shell': 0, # prevent actions from trying to use cygwin
@@ -169,10 +174,14 @@
           'BUILDING_UV_SHARED=1',
         ],
       }],
-      [ 'OS=="linux" or OS=="freebsd" or OS=="openbsd" or OS=="solaris"', {
-        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', '-pthread', ],
+      [ 'OS in "linux freebsd openbsd solaris"', {
+        'cflags': [ '-pthread', ],
+        'ldflags': [ '-pthread' ],
+      }],
+      [ 'OS in "linux freebsd openbsd solaris android"', {
+        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', ],
         'cflags_cc': [ '-fno-rtti', '-fno-exceptions' ],
-        'ldflags': [ '-pthread', '-rdynamic' ],
+        'ldflags': [ '-rdynamic' ],
         'target_conditions': [
           ['_type=="static_library"', {
             'standalone_static_library': 1, # disable thin archive which needs binutils >= 2.19
@@ -194,6 +203,10 @@
             'ldflags!': [ '-pthread' ],
           }],
         ],
+      }],
+      [ 'OS=="android"', {
+        'defines': ['_GLIBCXX_USE_C99_MATH'],
+        'libraries': [ '-llog' ],
       }],
       ['OS=="mac"', {
         'defines': ['_DARWIN_USE_64_BIT_INODE=1'],

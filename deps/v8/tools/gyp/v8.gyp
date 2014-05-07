@@ -68,6 +68,13 @@
                   'USING_V8_SHARED',
                 ],
               },
+	      'target_conditions': [
+	        ['OS=="android"', {
+	          'defines': [
+	            'ANDROID',
+	          ],
+	        }],
+	      ],
               'conditions': [
                 ['OS=="mac"', {
                   'xcode_settings': {

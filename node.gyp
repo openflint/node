@@ -317,6 +317,16 @@
             'PLATFORM="sunos"',
           ],
         }],
+        [ 'OS=="android"', {
+          'defines': [
+            '__ANDROID__',
+            '_GNU_SOURCE',
+            'NOT_HAVE_SA_LEN',
+            'USES_NETLINK',
+            'TARGET_OS_LINUX',
+            'HAVE_LINUX',
+          ],
+        }],
         [
           'OS in "linux freebsd" and node_shared_v8=="false"', {
             'ldflags': [

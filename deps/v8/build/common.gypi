@@ -328,6 +328,9 @@
       ['OS=="netbsd"', {
         'cflags': [ '-I/usr/pkg/include' ],
       }],
+      ['OS=="android"', {
+        'defines': [ 'ANDROID' ],
+      }],
     ],  # conditions
     'configurations': {
       'Debug': {

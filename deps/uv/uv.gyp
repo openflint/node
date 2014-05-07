@@ -19,7 +19,8 @@
         'conditions': [
           ['OS=="solaris"', {
             'cflags': [ '-pthreads' ],
-          }, {
+          }],
+          ['OS not in "solaris android"', {
             'cflags': [ '-pthread' ],
           }],
         ],
@@ -158,7 +159,8 @@
             'conditions': [
               ['OS=="solaris"', {
                 'ldflags': [ '-pthreads' ],
-              }, {
+              }],
+              ['OS != "solaris" and OS != "android"', {
                 'ldflags': [ '-pthread' ],
               }],
             ],
@@ -176,7 +178,7 @@
             }],
           ],
         }],
-        [ 'OS=="linux" or OS=="mac"', {
+        [ 'OS in "linux mac android"', {
           'sources': [ 'src/unix/proctitle.c' ],
         }],
         [ 'OS=="mac"', {
@@ -210,6 +212,22 @@
           ],
           'link_settings': {
             'libraries': [ '-ldl', '-lrt' ],
+          },
+        }],
+        [ 'OS=="android"', {
+          'sources': [
+            'src/unix/linux-core.c',
+            'src/unix/linux-inotify.c',
+            'src/unix/linux-syscalls.c',
+            'src/unix/linux-syscalls.h',
+            'src/unix/pthread-fixes.c',
+            'src/unix/android-ifaddrs.c',
+          ],
+          'defines': [
+            '__ANDROID__',
+          ],
+          'link_settings': {
+            'libraries': [ '-ldl' ],
           },
         }],
         [ 'OS=="solaris"', {

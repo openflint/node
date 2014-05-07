@@ -279,17 +279,24 @@ int uv_cond_init(uv_cond_t* cond) {
 
 int uv_cond_init(uv_cond_t* cond) {
   pthread_condattr_t attr;
+  int err;
 
-  if (pthread_condattr_init(&attr))
-    return -1;
+  err = pthread_condattr_init(&attr);
+  if (err)
+    return -err;
 
-  if (pthread_condattr_setclock(&attr, CLOCK_MONOTONIC))
+#if !defined(__ANDROID__)
+  err = pthread_condattr_setclock(&attr, CLOCK_MONOTONIC);
+  if (err)
+    goto error2;
+#endif
+
+  err = pthread_cond_init(cond, &attr);
+  if (err)
     goto error2;
 
-  if (pthread_cond_init(cond, &attr))
-    goto error2;
-
-  if (pthread_condattr_destroy(&attr))
+  err = pthread_condattr_destroy(&attr);
+  if (err)
     goto error;
 
   return 0;
@@ -298,7 +305,7 @@ error:
   pthread_cond_destroy(cond);
 error2:
   pthread_condattr_destroy(&attr);
-  return -1;
+  return -err;
 }
 
 #endif /* defined(__APPLE__) && defined(__MACH__) */
