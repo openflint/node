@@ -56,6 +56,7 @@
       'lib/vm.js',
       'lib/zlib.js',
       'lib/protobuf.js',
+      'lib/uuid.js',
     ],
   },
 
