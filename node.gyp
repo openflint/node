@@ -93,6 +93,8 @@
       'lib/_mdns_resolver_sequence_tasks.js',
       'lib/_mdns_service.js',
       'lib/_mdns_service_type.js',
+
+      'lib/thirty_two.js',
     ],
   },
 
