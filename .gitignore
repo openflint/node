@@ -60,3 +60,8 @@ deps/openssl/openssl.xml
 
 # test artifacts
 tools/faketime
+
+.idea
+*.xcodeproj
+*.xcodeproj/*
+
