@@ -56,6 +56,7 @@
         'src/google/protobuf/stubs/substitute.cc',
         'src/google/protobuf/stubs/once.cc',
         'src/google/protobuf/stubs/structurally_valid.cc',
+        'src/google/protobuf/stubs/atomicops_internals_x86_gcc.cc',
       ],
       'conditions': [
         [ 'library=="static_library"', {
