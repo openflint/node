@@ -43,7 +43,6 @@ NODE_EXT_LIST_ITEM(node_fs_event_wrap)
 NODE_EXT_LIST_ITEM(node_signal_wrap)
 
 NODE_EXT_LIST_ITEM(node_protobuf)
-NODE_EXT_LIST_ITEM(node_dns_sd)
 
 #if __ANDROID__
 NODE_EXT_LIST_ITEM(node_androidlog)
