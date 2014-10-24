@@ -1,8 +1,5 @@
+1. Compile adnroid version
+source android-configure; make
 
-1、编译 Android 平台的版本：
-
-source android-configure $(ANDROID_NDK); make
-
-2、编译 Mac 平台的版本：
-
+2. Compile Mac/Linux version:
 ./configure; make
