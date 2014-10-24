@@ -83,17 +83,6 @@
       'lib/_ws_websocket.js',
       'lib/_ws_websocket_server.js',
 
-      'lib/mdns.js',
-      'lib/_mdns_advertisement.js',
-      'lib/_mdns_avahi.js',
-      'lib/_mdns_browser.js',
-      'lib/_mdns_dns_sd.js',
-      'lib/_mdns_io_watcher.js',
-      'lib/_mdns_network_interface.js',
-      'lib/_mdns_resolver_sequence_tasks.js',
-      'lib/_mdns_service.js',
-      'lib/_mdns_service_type.js',
-
       'lib/thirty_two.js',
     ],
   },
