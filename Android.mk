@@ -15,13 +15,10 @@
 #
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
-FLING_NODE_PATH := $(LOCAL_PATH)
 
-.PHONY: fling-node
-prebuilt: fling-node
-fling-node:
-	mkdir -p $(TARGET_OUT)/bin
-	rm -rf $(TARGET_OUT)/bin/node
-	cd $(ANDROID_BUILD_TOP)
-	cp -rf $(FLING_NODE_PATH)/fling-node/fling-node $(TARGET_OUT)/bin/node
-	chmod +x $(TARGET_OUT)/bin/node
+LOCAL_MODULE := node
+LOCAL_SRC_FILES := fling-node/fling-node
+LOCAL_MODULE_CLASS := EXECUTABLES
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_PREBUILT)
